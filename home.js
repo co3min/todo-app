@@ -1,47 +1,29 @@
-let users = [
-  {
-    id: 1,
-    name: "Mihai",
-    email: "mihai.gheorghe@csie.ase.ro",
-    password: "Mihai1!",
-  },
-  {
-    id: 2,
-    name: "Elena",
-    email: "elena@gmail.com",
-    password: "Elena1!",
-  },
-];
-
-let todos = [
-  {
-    id: 1,
-    taskName: "do the dishes!",
-    status: "to-do",
-    responsible: "Mihai",
-  },
-  {
-    id: 2,
-    taskName: "do the laundry!",
-    status: "to-do",
-    responsible: "Mihai",
-  },
-  {
-    id: 3,
-    taskName: "do your homework!",
-    status: "in progress",
-    responsible: "Elena",
-  },
-  {
-    id: 4,
-    taskName: "binging",
-    status: "done",
-    responsible: "Elena",
-  },
-];
-
 import { login } from "./Login/login.js";
+import { logout } from "./Login/logout.js";
+import todos from "./Database/todos.js";
+import { addToDo } from "./Todos/add.js";
+import { renderTodos } from "./Todos/renderTodos.js";
 
 const loginButton = document.getElementById("loginSubmit");
 
 loginButton.addEventListener("click", login);
+
+const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+if (isLoggedIn) {
+  document.getElementById("login").setAttribute("hidden", "true");
+  document.getElementById("register").setAttribute("hidden", "true");
+  document.getElementById("user").removeAttribute("hidden");
+  document.getElementById(
+    "greetigs"
+  ).textContent = `Salut ${localStorage.getItem("userName")}`;
+}
+const logoutBtn = document.getElementById("logout");
+logoutBtn.addEventListener("click", logout);
+
+// todos.filter((t) => t.responsible === localStorage.getItem("name"));
+renderTodos();
+
+const addTaskBtn = document.getElementById("addEditSubmit");
+
+addTaskBtn.addEventListener("click", addToDo);

@@ -4,7 +4,8 @@ body * {
 }
 
 button,
-input {
+input,
+select {
   display: block;
   height: 2.5rem;
   padding: 7px;
@@ -16,4 +17,23 @@ input {
 button {
   background-color: bisque;
   font-weight: bold;
+}
+
+.taskName {
+  /* display: inline; */
+  width: 300px;
+  font-weight: bold;
+  color: brown;
+  margin: 10px;
+}
+
+.status {
+  font-size: small;
+  margin: 50px;
+}
+
+.todoButtonDelete {
+  display: inline;
+  height: 2rem;
+  font-size: small;
 }
